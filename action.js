@@ -14,11 +14,10 @@ async function exportSecrets() {
     for (const secret of secrets) {
         const { secretPath, outputName, secretKey } = secret;
         const requestOptions = {
+            rejectUnauthorized: false,
             headers: {
                 'X-Vault-Token': vaultToken
-            },
-            rejectUnauthorized: false
-            };
+            }};
 
         if (vaultNamespace != null){
             requestOptions.headers["X-Vault-Namespace"] = vaultNamespace
