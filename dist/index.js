@@ -3767,7 +3767,7 @@ async function exportSecrets() {
             requestOptions.headers["X-Vault-Namespace"] = vaultNamespace
         }
 
-        const result = await got(`${vaultUrl}/v1/secret/data/${secretPath}`, requestOptions);
+        const result = await got(`${vaultUrl}/v1/${secretPath}`, requestOptions);
 
         const parsedResponse = JSON.parse(result.body);
         const vaultKeyData = parsedResponse.data;
