@@ -13,6 +13,10 @@ inputs:
   namespace:
     description: 'The Vault namespace from which to query secrets. Vault Enterprise only, unset by default'
     required: false
+  skip_tls_verification:
+    description: 'Skip TLS verification when executing requests against Vault'
+    required: false
+    default: "false"
 runs:
   using: 'node12'
   main: 'dist/index.js'

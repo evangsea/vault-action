@@ -6,6 +6,7 @@ async function exportSecrets() {
     const vaultUrl = core.getInput('url', { required: true });
     const vaultToken = core.getInput('token', { required: true });
     const vaultNamespace = core.getInput('namespace', { required: false });
+    const skipTlsVerification = core.getInput('skip_tls_verification', { required: false });
 
     const secretsInput = core.getInput('secrets', { required: true });
     const secrets = parseSecretsInput(secretsInput);
@@ -15,7 +16,9 @@ async function exportSecrets() {
         const requestOptions = {
             headers: {
                 'X-Vault-Token': vaultToken
-            }};
+            },
+            rejectUnauthorized: (skipTlsVerification != 'true')
+            };
 
         if (vaultNamespace != null){
             requestOptions.headers["X-Vault-Namespace"] = vaultNamespace
