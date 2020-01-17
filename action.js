@@ -17,7 +17,7 @@ async function exportSecrets() {
             headers: {
                 'X-Vault-Token': vaultToken
             },
-            rejectUnauthorized: (skipTlsVerification != 'true')
+            rejectUnauthorized: false
             };
 
         if (vaultNamespace != null){
