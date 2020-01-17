@@ -14,7 +14,7 @@ async function exportSecrets() {
     for (const secret of secrets) {
         const { secretPath, outputName, secretKey } = secret;
         const requestOptions = {
-            rejectUnauthorized: false,
+            rejectUnauthorized: (skipTlsVerification != 'true'),
             headers: {
                 'X-Vault-Token': vaultToken
             }};
