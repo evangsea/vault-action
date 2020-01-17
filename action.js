@@ -27,8 +27,7 @@ async function exportSecrets() {
 
         const parsedResponse = JSON.parse(result.body);
         const vaultKeyData = parsedResponse.data;
-        const versionData = vaultKeyData.data;
-        const value = versionData[secretKey];
+        const value = vaultKeyData[secretKey];
         command.issue('add-mask', value);
         core.exportVariable(outputName, `${value}`);
         core.debug(`✔ ${secretPath} => ${outputName}`);
