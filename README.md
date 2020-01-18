@@ -1,6 +1,6 @@
 # vault-action
 
-A helper action for easily pulling secrets from the default v2 K/V backend of vault.
+A helper action for pulling secrets from the Hashicorp Vault API.
 
 ## Example Usage
 
@@ -15,6 +15,7 @@ jobs:
               with:
                 url: https://vault.mycompany.com:8200
                 token: ${{ secrets.VaultToken }}
+                skip_tls_verification: false
                 secrets: |
                     ci/aws accessKey | AWS_ACCESS_KEY_ID ;
                     ci/aws secretKey | AWS_SECRET_ACCESS_KEY ;
